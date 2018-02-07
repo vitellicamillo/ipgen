@@ -1,7 +1,8 @@
 //
 //  main.c
 //  ipgen
-//
+//  
+//  Ip adress generator from user arguments
 //  Gerador de endereçamento IP a partir do range estabelecido pelo usuário.
 //
 //  Created by Danilo Vitelli Camillo on 31/12/15.
@@ -20,21 +21,22 @@ int main(int argc, const char * argv[]) {
     int quotient, remainder;
     FILE *fp;
     
-    /*  Recebe o ip como argumento da linha de comando e atribui os octetos às respectivas variáveis*/
+    /*  Receives the IP address as an argument from the command line and atributes the octets to the respectives variables*/
     
     if(argc == 2){
     
     sscanf(argv[1],"%d.%d.%d.%d/%d", &firstOctet, &secondOctet, &thirdOctet, &fourthOctet, &mask);
         
     }else{
-        printf("Digite um endereço IP com a máscara:\n");
+        printf("Type an ip address with mask:\n");
         scanf("%d.%d.%d.%d/%d",&firstOctet, &secondOctet, &thirdOctet, &fourthOctet, &mask);
     }
-    
-    /*  Faz a divisão inteira da máscara por 8, descobrindo o quociente(quotient) e o resto(remainder), sendo que o quociente é igual a quantidade de octetos e o resto indica a quantidade de bits do octeto posterior que são utilizados pela máscara.*/
+    /*  Makes the mask integer division by 8 and gets the quotient and the remainder. The quotient indicates the number of fixed octets and the remainder indicates the number of bits for the next octet used by the mask*/
     
     quotient = mask/8;
     remainder = mask%8;
+    
+    /*  Opens a file to write */
     fp = fopen("ipgen.txt","w UTF-8");
     if(!fp){
         printf( "Erro na abertura do arquivo");
