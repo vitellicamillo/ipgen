@@ -1,10 +1,12 @@
-﻿$Result = @()
-$ListaNome = Get-Content -Path 'Z:\Desktop\Lista-2.txt'
+﻿$ResultFile = @()
+$SourceFile_PATH = "Z:\Desktop\Lista-2.txt"
+$ResultFile_PATH = "Z:\Desktop\Result-4.csv"
+$SourceFile = Get-Content -Path $SourceFile_PATH
 
-foreach ($Nome in $ListaNome){
+foreach ($Name in $SourceFile){
 
-    $Result += get-aduser -filter{name -like $Nome} -properties * | 
+    $Result += get-aduser -filter{name -like $Name} -properties * | 
     select-object SamAccountName, name, mail, ExtensionAttribute14, Division, ExtensionAttribute1
 } 
 
-$Result | Export-csv -Path Z:\Desktop\Result-4.csv -NoTypeInformation -Encoding UTF8
+$ResultFile | Export-csv -Path $ResultFile_PATH -NoTypeInformation -Encoding UTF8
