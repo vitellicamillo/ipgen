@@ -11,8 +11,3 @@
  }
 
  $result | Export-csv -Path $path -NoTypeInformation -Encoding utf8
-
-
-
-
-
