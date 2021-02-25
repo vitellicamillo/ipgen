@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/bin/env zsh
 #Testing variables
 days=2
 man=mark
