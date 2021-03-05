@@ -2,7 +2,8 @@
  $users = @()
  $result = @()
  $group = "GRP_PROXY_PERFIL_5"
- $path = "Z:\Desktop\Netskope\usuarios_"+ $group +".csv"
+ $date = Get-Date -format "yyyyMMdd"
+ $path = "Z:\Desktop\Netskope\usuarios_"+ $group +"_"+$date+".csv"
   
  $users = Get-ADGroupMember -identity $group |select-object samaccountname 
  
