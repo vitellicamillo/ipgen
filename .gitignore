@@ -1,0 +1,5 @@
+#ignore debug files
+*.dSYM/
+
+# ignore vscode files
+.vscode/
